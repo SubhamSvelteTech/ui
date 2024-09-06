@@ -22,6 +22,7 @@ import Image from "next/image";
 import Logo from "../../public/logo.png";
 import { useRouter } from "next/navigation";
 import { Icons } from "./ui/Icons";
+import { UserProfile } from "./UserProfile";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -141,6 +142,7 @@ export function NavigationBar() {
 
       <div className="flex md:justify-end gap-2">
         <ThemeModeToggle />
+        <UserProfile />
         <Sidebar />
       </div>
     </NavigationMenu>
