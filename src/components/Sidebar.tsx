@@ -10,12 +10,37 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import {
+  Github,
+  Instagram,
+  Linkedin,
+  LinkedinIcon,
+  LucideLinkedin,
+  Menu,
+  Twitter,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import {
+  GitHubLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+  TwitterLogoIcon,
+} from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
 
 export function Sidebar() {
+  const { theme } = useTheme();
+
+  const sidebarMenus = [
+    { id: 1, name: "Home", url: "/" },
+    { id: 2, name: "Components", url: "/components" },
+    { id: 3, name: "Others", url: "/others" },
+    { id: 4, name: "Data", url: "/data" },
+  ];
+
   return (
-    <div className="grid md:grid-cols-2 gap-2 md:hidden">
+    <div className={`grid md:grid-cols-2 gap-2 md:hidden relative`}>
       <Sheet key={"right"}>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon">
@@ -23,17 +48,32 @@ export function Sidebar() {
           </Button>
         </SheetTrigger>
         <SheetClose asChild>
-          <SheetContent side={"right"}>
-            <SheetHeader>
-              <SheetTitle>Edit profile</SheetTitle>
-              <SheetDescription>
-                Make changes to your profile here. Click save when done.
-              </SheetDescription>
-            </SheetHeader>
-            <SheetFooter>
-              {/* <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
-            </SheetClose> */}
+          <SheetContent
+            side={"right"}
+            className="pl-10 pt-28 flex flex-col gap-10"
+          >
+            {sidebarMenus?.map((item: any) => (
+              <Link
+                href={item?.url}
+                key={item?.id}
+                className={`text-2xl font-semibold hover:text-blue-400 ${theme === "dark" ? "text-white" : "text-black"}`}
+              >
+                {item?.name}
+              </Link>
+            ))}
+
+            <SheetFooter
+              style={{
+                position: "absolute",
+                bottom: "40px",
+              }}
+            >
+              <div className="flex gap-6 w-full items-center">
+                <Github className="h-8 w-8" strokeWidth={1.6} />
+                <LucideLinkedin className="h-8 w-8" strokeWidth={1.5} />
+                <Twitter className="h-8 w-8" strokeWidth={1.6} />
+                <Instagram className="h-8 w-8" strokeWidth={1.6} />
+              </div>
             </SheetFooter>
           </SheetContent>
         </SheetClose>

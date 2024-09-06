@@ -21,6 +21,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -62,9 +63,10 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationBar() {
   const router = useRouter();
+  const {theme} = useTheme();
 
   return (
-    <NavigationMenu className="flex items-center justify-between md:mx-10 mx-2 md:mt-4 mt-2">
+    <NavigationMenu className={`flex items-center justify-between md:mx-10 mx-2 md:mt-4 mt-2 ${theme === "dark" ? "text-white" : "text-black"}`}>
       <Button variant="outline" size="sm" onClick={() => router.push("/")}>
         {/* <Image src={Logo} alt="" width={100} height={100}/> */}
         Logo
