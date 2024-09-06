@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-// import { Icons } from "@/components/icons";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,7 +21,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
+import { Icons } from "./ui/Icons";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -63,10 +63,9 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationBar() {
   const router = useRouter();
-  const {theme} = useTheme();
 
   return (
-    <NavigationMenu className={`flex items-center justify-between md:mx-10 mx-2 md:mt-4 mt-2 ${theme === "dark" ? "text-white" : "text-black"}`}>
+    <NavigationMenu className="flex items-center justify-between md:mx-10 mx-2 md:mt-4 mt-2 dark:text-white">
       <Button variant="outline" size="sm" onClick={() => router.push("/")}>
         {/* <Image src={Logo} alt="" width={100} height={100}/> */}
         Logo
@@ -83,7 +82,8 @@ export function NavigationBar() {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    {/* <Icons.logo className="h-6 w-6" /> */}
+                    <Icons.logo className="h-6 w-6" />
+                    <Icons.twitter className="h-6 w-6" />
                     <div className="mb-2 mt-4 text-lg font-medium">
                       shadcn/ui
                     </div>

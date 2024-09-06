@@ -30,8 +30,6 @@ import {
 import { useTheme } from "next-themes";
 
 export function Sidebar() {
-  const { theme } = useTheme();
-
   const sidebarMenus = [
     { id: 1, name: "Home", url: "/" },
     { id: 2, name: "Components", url: "/components" },
@@ -40,10 +38,12 @@ export function Sidebar() {
   ];
 
   return (
-    <div className={`grid md:grid-cols-2 gap-2 md:hidden relative`}>
+    <div
+      className={`grid md:grid-cols-2 gap-2 md:hidden relative dark:text-white`}
+    >
       <Sheet key={"right"}>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" className="">
             <Menu className="h-4 w-4" />
           </Button>
         </SheetTrigger>
@@ -56,7 +56,8 @@ export function Sidebar() {
               <Link
                 href={item?.url}
                 key={item?.id}
-                className={`text-2xl font-semibold hover:text-blue-400 ${theme === "dark" ? "text-white" : "text-black"}`}
+                className={`text-2xl font-semibold hover:text-blue-400 
+                  `}
               >
                 {item?.name}
               </Link>
