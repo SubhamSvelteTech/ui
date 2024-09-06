@@ -65,7 +65,7 @@ export function NavigationBar() {
   const router = useRouter();
 
   return (
-    <NavigationMenu className="flex items-center justify-between md:mx-10 mx-2 md:mt-4 mt-2 dark:text-white">
+    <NavigationMenu className="flex items-center justify-between md:mx-10 mx-2 md:my-4 my-2 dark:text-white">
       <Button variant="outline" size="sm" onClick={() => router.push("/")}>
         {/* <Image src={Logo} alt="" width={100} height={100}/> */}
         Logo
@@ -73,7 +73,7 @@ export function NavigationBar() {
 
       <NavigationMenuList className="w-fit mx-auto md:flex hidden">
         <NavigationMenuItem>
-          <NavigationMenuTrigger>All</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -126,7 +126,14 @@ export function NavigationBar() {
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Others
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/docs" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Data
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
